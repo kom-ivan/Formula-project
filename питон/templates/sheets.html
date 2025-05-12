@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Листовой металл</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for subcat, image in subcategories %}
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <!-- Изображение из БД -->
+                <img src="{{ url_for('static', filename='img/' + image) if image else url_for('static', filename='img/no-image.png') }}" 
+                     class="card-img-top" 
+                     alt="{{ subcat }}"
+                     style="height: 300px; object-fit: cover;">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ subcat }}</h5>
+                </div>
+                
+                <div class="card-footer bg-white">
+                    <a href="{{ url_for('subcategory', name=subcat) }}" class="btn btn-outline-primary w-100">
+                        Выбрать
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}О компании — Formula{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <h1>О компании Formula</h1>
+    
+    <div class="about-content">
+        <p>Мы — ведущий поставщик металлопроката с 2010 года. Наша компания специализируется на:</p>
+        <ul>
+            <li>Продаже металлопроката</li>
+            <li>Оптовых поставках для промышленных предприятий</li>
+            <li>Индивидуальных решениях для клиентов</li>
+        </ul>
+        
+        <h2>Наши преимущества:</h2>
+        <div class="advantages">
+            <div class="advantage-card">
+                <h3> Гарантия качества</h3>
+                <p>Вся продукция сертифицирована</p>
+            </div>
+            <div class="advantage-card">
+                <h3> Быстрая доставка</h3>
+                <p>Отгрузка в день заказа</p>
+            </div>
+        </div>
+    </div>
+    
+    <a href="{{ url_for('home') }}" class="btn-back">← На главную</a>
+</div>
+{% endblock %}

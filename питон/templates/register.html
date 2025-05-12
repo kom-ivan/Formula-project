@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация | Formula Metal{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0 text-center">
+                        <i class="bi bi-person-plus"></i> Создание аккаунта
+                    </h4>
+                </div>
+                
+                <div class="card-body p-4">
+                    <!-- Форма регистрации -->
+                    <form method="POST" class="needs-validation" novalidate>
+                        {{ form.hidden_tag() }}
+                        
+                        <!-- Поле "Имя пользователя" -->
+                        <div class="mb-3">
+                            <label for="username" class="form-label">
+                                <i class="bi bi-person-fill"></i> Имя пользователя
+                            </label>
+                            {{ form.username(class="form-control", id="username", required=True) }}
+                            <div class="invalid-feedback">
+                                Пожалуйста, введите имя пользователя (мин. 4 символа)
+                            </div>
+                        </div>
+                        
+                        <!-- Поле "Пароль" -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">
+                                <i class="bi bi-lock-fill"></i> Пароль
+                            </label>
+                            {{ form.password(class="form-control", id="password", required=True) }}
+                            <div class="invalid-feedback">
+                                Пароль должен содержать минимум 6 символов
+                            </div>
+                        </div>
+                        
+                        <!-- Поле "Подтверждение пароля" -->
+                        <div class="mb-4">
+                            <label for="confirm_password" class="form-label">
+                                <i class="bi bi-lock-fill"></i> Подтвердите пароль
+                            </label>
+                            {{ form.confirm_password(class="form-control", id="confirm_password", required=True) }}
+                            <div class="invalid-feedback">
+                                Пароли должны совпадать
+                            </div>
+                        </div>
+                        
+                        <!-- Кнопка отправки -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="bi bi-check-circle"></i> Зарегистрироваться
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Ссылка на вход -->
+                    <div class="mt-4 text-center">
+                        Уже есть аккаунт? 
+                        <a href="{{ url_for('login') }}" class="text-decoration-none">
+                            Войдите здесь
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

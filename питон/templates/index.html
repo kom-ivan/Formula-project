@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог | Formula Metal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4"><i class="bi bi-list-ul"></i> Каталог металлопроката</h1>
+
+    {% if not current_user.is_authenticated %}
+    <div class="alert alert-warning">
+        <i class="bi bi-exclamation-triangle"></i> Для просмотра цен <a href="{{ url_for('login') }}" class="alert-link">войдите</a> или <a href="{{ url_for('register') }}" class="alert-link">зарегистрируйтесь</a>.
+    </div>
+    {% endif %}
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <!-- Проволока -->
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/wire.png') }}" class="card-img-top" alt="Проволока" onerror="this.src='https://via.placeholder.com/300x200?text=Проволока'">
+                <div class="card-body">
+                    <h5 class="card-title">Проволока</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-rulers text-primary"></i> Диаметр: 1.0-6.0 мм</li>
+                        <li><i class="bi bi-gear text-primary"></i> Материал: сталь, медь, алюминий</li>
+                        {% if current_user.is_authenticated %}
+                            <li class="fw-bold mt-2"><i class="bi bi-tag text-success"></i> Цена: от 120 ₽/кг</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-outline-primary w-100">Подробнее</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Листовой металл (изменённая карточка) -->
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/sheet.png') }}" 
+                    class="card-img-top" 
+                    alt="Листовой металл" 
+                    onerror="this.src='https://via.placeholder.com/300x200?text=Лист'">
+                <div class="card-body">
+                    <h5 class="card-title">Листовой металл</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-rulers text-primary"></i> Толщина: 0.5-20 мм</li>
+                        <li><i class="bi bi-gear text-primary"></i> Материал: сталь, нержавейка</li>
+                        {% if current_user.is_authenticated %}
+                            <li class="fw-bold mt-2"><i class="bi bi-tag text-success"></i> Цена: от 300 ₽/м²</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-white">
+                    <!-- Изменённая кнопка: ведёт на страницу подкатегорий -->
+                    <a href="{{ url_for('sheets') }}" class="btn btn-outline-primary w-100">Подробнее</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Трубы -->
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/pipe.png') }}" class="card-img-top" alt="Трубы" onerror="this.src='https://via.placeholder.com/300x200?text=Труба'">
+                <div class="card-body">
+                    <h5 class="card-title">Трубы</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-rulers text-primary"></i> Диаметр: 10-500 мм</li>
+                        <li><i class="bi bi-gear text-primary"></i> Материал: сталь, ПВХ</li>
+                        {% if current_user.is_authenticated %}
+                            <li class="fw-bold mt-2"><i class="bi bi-tag text-success"></i> Цена: от 250 ₽/м.п.</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-outline-primary w-100">Подробнее</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- метизы-->
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/hardware.png') }}" class="card-img-top" alt="Трубы" onerror="this.src='https://via.placeholder.com/300x200?text=Труба'">
+                <div class="card-body">
+                    <h5 class="card-title">Метизы</h5>
+                    <ul class="list-unstyled">
+                        <!--li><i class="bi bi-rulers text-primary"></i> Диаметр: 10-500 мм</li-->
+                        <!--li><i class="bi bi-gear text-primary"></i> Материал: сталь, ПВХ</li-->
+                        {% if current_user.is_authenticated %}
+                            <!--li class="fw-bold mt-2"><i class="bi bi-tag text-success"></i> Цена: от 250 ₽/м.п.</li-->
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-outline-primary w-100">Подробнее</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Арматура-->
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <img src="{{ url_for('static', filename='img/rebar.png') }}" class="card-img-top" alt="Трубы" onerror="this.src='https://via.placeholder.com/300x200?text=Труба'">
+                <div class="card-body">
+                    <h5 class="card-title">Арматура</h5>
+                    <ul class="list-unstyled">
+                        <!--li><i class="bi bi-rulers text-primary"></i> Диаметр: 10-500 мм</li-->
+                        <!--li><i class="bi bi-gear text-primary"></i> Материал: сталь, ПВХ</li-->
+                        {% if current_user.is_authenticated %}
+                            <!--li class="fw-bold mt-2"><i class="bi bi-tag text-success"></i> Цена: от 250 ₽/м.п.</li-->
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="card-footer bg-white">
+                    <button class="btn btn-outline-primary w-100">Подробнее</button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+{% endblock %}
